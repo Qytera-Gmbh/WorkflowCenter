@@ -10,6 +10,9 @@ on:
       browser:
         required: true
         type: string     
+      testGroup:
+        required: true
+        type: string     
                 
 
 
@@ -52,7 +55,7 @@ jobs:
 
         
       - name: Build with Maven
-        run: mvn -s ${{ github.workspace }}/.github/settings.xml  clean -Dtest=TestRunner#run test -Ddriver.name="${{inputs.browser}}-remote" -Denvironment=${{inputs.environment}}  -Ddriver.remoteUrl="http://localhost:4444/wd/hub"
+        run: mvn -s ${{ github.workspace }}/.github/settings.xml  clean -Dtest=TestRunner#run test -Ddriver.name="${{inputs.browser}}-remote" -Denvironment=${{inputs.environment}} -Dgroups=${{inputs.testGroup}}  -Ddriver.remoteUrl="http://localhost:4444/wd/hub"
         
     
       - name: Copy Report
