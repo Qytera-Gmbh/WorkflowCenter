@@ -9,7 +9,19 @@ on:
         type: string     
       dockerScriptPath:
         required: true
-        type: string    
+        type: string
+    secrets:
+      AWS_ACCESS_KEY_ID:
+        required: true
+      AWS_SECRET_ACCESS_KEY:
+        required: true
+      AWS_DEFAULT_REGION:
+        required: true
+      GITHUB_TOKEN:
+        required: true
+      SONAR_TOKEN:
+        required: true
+        
           
         
 jobs:
