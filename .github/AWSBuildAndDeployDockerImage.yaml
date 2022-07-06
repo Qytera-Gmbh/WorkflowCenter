@@ -1,14 +1,15 @@
 name: AWSBuildAndDeployDockerImage
 
+
 on:
   workflow_call:
     inputs:
-     enviroment:
-       required: true
-       type: string     
-     dockerScriptPath:
-       required: true
-       type: string    
+      enviroment:
+        required: true
+        type: string     
+      dockerScriptPath:
+        required: true
+        type: string    
           
         
 jobs:
