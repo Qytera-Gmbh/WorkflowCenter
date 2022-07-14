@@ -4,7 +4,7 @@ name: AWSBuildAndDeployDockerImage
 on:
   workflow_call:
     inputs:
-      enviroment:
+      environment:
         required: true
         type: string     
       dockerScriptPath:
