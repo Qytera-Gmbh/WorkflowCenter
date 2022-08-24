@@ -60,4 +60,4 @@ jobs:
       - name: Create AWS credentials files
         run: sh ./scripts/aws/create_files.sh
       - name: Build API docker image
-        run: sh ${{ inputs.dockerScriptPath }}/build_and_deploy.sh
+        run: sh ${{ inputs.dockerScriptPath }}/build_and_deploy_dev.sh
