@@ -7,6 +7,9 @@ on:
       application_name:
         required: true
         type: string     
+      docker_compose_file:
+        required: true
+        type: string     
       environment_name:
         required: true
         type: string
@@ -34,7 +37,7 @@ jobs:
         uses: gerred/actions/current-time@master
         id: current-time
       - name: Generate deployment package
-        run: zip -r deploy.zip docker-compose.yml
+        run: zip -r deploy.zip ${{ inputs.docker_compose_file }}
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v20
         with:
