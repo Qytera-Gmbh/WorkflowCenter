@@ -23,6 +23,8 @@ on:
         required: true
       AWS_DEFAULT_REGION:
         required: true
+      POSTGRES_CONNECTION_STRING:
+        required: true
 
 jobs:
   aws-ebs-deploy:
@@ -30,6 +32,7 @@ jobs:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+      POSTGRES_CONNECTION_STRING: ${{ secrets.POSTGRES_CONNECTION_STRING }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
