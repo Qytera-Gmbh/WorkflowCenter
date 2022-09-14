@@ -42,6 +42,16 @@ jobs:
         run: mv ${{ inputs.docker_compose_file }} docker-compose.yml
       - name: Generate deployment package
         run: zip -r deploy.zip docker-compose.yml
+      - name: Archive docker-compose file
+        uses: actions/upload-artifact@v3
+        with:
+          name: docker-compose
+          path: docker-compose.yml
+      - name: Archive deployment package
+        uses: actions/upload-artifact@v3
+        with:
+          name: deploy
+          path: deploy.zip
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v20
         with:
