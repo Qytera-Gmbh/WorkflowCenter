@@ -36,8 +36,10 @@ jobs:
       - name: Get current time
         uses: gerred/actions/current-time@master
         id: current-time
+      - name: Rename docker-compose file
+        run: mv ${{ inputs.docker_compose_file }} docker-compose.yml
       - name: Generate deployment package
-        run: zip -r deploy.zip ${{ inputs.docker_compose_file }}
+        run: zip -r deploy.zip docker-compose.yml
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v20
         with:
