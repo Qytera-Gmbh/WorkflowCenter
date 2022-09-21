@@ -17,8 +17,6 @@ on:
         required: true
       AWS_DEFAULT_REGION:
         required: true
-      SONAR_TOKEN:
-        required: true
         
           
         
@@ -28,9 +26,6 @@ jobs:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
-      NODE_ENV: test
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
     runs-on: ubuntu-latest # runner
 
@@ -53,4 +48,4 @@ jobs:
       - name: Create AWS credentials files
         run: sh ./scripts/aws/create_files.sh
       - name: Build API docker image
-        run: sh ${{ inputs.dockerScriptPath }}/build_and_deploy_stage.sh
+        run: sh ${{ inputs.dockerScriptPath }}/build_and_deploy_${{ inputs.environment }}.sh
