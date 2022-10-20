@@ -9,12 +9,19 @@ on:
       port:
         required: true
         type: string
+      scriptPath:
+        required: true
+        type: string
     secrets:
       AWS_ACCESS_KEY_ID:
         required: true
       AWS_SECRET_ACCESS_KEY:
         required: true
       AWS_DEFAULT_REGION:
+        required: true
+      APP_USERNAME:
+        required: true
+      APP_PASSWORD:
         required: true
 
 jobs:
@@ -43,6 +50,6 @@ jobs:
       - name: Authenticate against docker registry
         run: sh ./scripts/docker/authenticate.sh
       - name: Run QTAF Tests on Selenium
-        run: sh ./scripts/tests/frontend/${{ inputs.driver }}.sh
+        run:  USERNAME=${{ secrets.APP_USERNAME }} PASSWORD=${{ secrets.APP_PASSWORD }} sh ${{ inputs.scriptPath }}
       - name: Upload logs to S3
-        run: DRIVER_NAME=${{ inputs.driver }} sh ./scripts/tests/logs/upload_qtaf_logs.sh
+        run: DRIVER_NAME=${{ inputs.driver }} USERNAME=${{ secrets.APP_USERNAME }} PASSWORD=${{ secrets.APP_PASSWORD }} sh ./scripts/tests/logs/upload_qtaf_logs.sh
