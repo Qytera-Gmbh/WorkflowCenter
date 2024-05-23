@@ -23,6 +23,6 @@ jobs:
       AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Authenticate against AWS docker registry
         run: aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin ${{ inputs.repository }};
